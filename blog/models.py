@@ -1,9 +1,10 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Post(models.Model):
     title = models.CharField(max_length=150)
     content = models.TextField()
-    #author = models.ForeignKey(models.ForeignKey)
+    author = models.ForeignKey(User, on_delete=models.SET_NULL, null = True)
     #category = models.ForeignKey(models.ForeignKey)
     #tag = models.ForeignKey(models.ForeignKey)
     #image = models.ImageField()
