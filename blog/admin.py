@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post
+from .models import *
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
     date_hierarchy = 'created_date'
@@ -7,3 +7,11 @@ class PostAdmin(admin.ModelAdmin):
     list_display = ('id','title','author','status','created_date','published_date','counted_views')
     list_filter = ('status',)
     search_fields = ['title','content']
+@admin.register(Categories)
+class CategoriesAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+    search_fields = ['name']
+@admin.register(Tags)
+class TagsAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+    search_fields = ['name']
