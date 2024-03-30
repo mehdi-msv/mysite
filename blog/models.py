@@ -17,7 +17,7 @@ class Post(models.Model):
     tag = models.ManyToManyField(Tags)
     image = models.ImageField(upload_to='blog/',default='blog/default.jpg')
     status = models.BooleanField(default = False)
-    published_date = models.DateField(null = True)
+    published_date = models.DateTimeField(null = True)
     counted_views = models.IntegerField(default = 0)
     created_date = models.DateTimeField(auto_now_add = True)
     updated_date = models.DateTimeField(auto_now = True)
