@@ -37,8 +37,10 @@
     -webkit-touch-callout: none; }
   .owl-carousel .owl-item img {
     display: block;
-    width: 100%;
-    -webkit-transform-style: preserve-3d; }
+    width: 456px;
+    height: 200px;
+    -webkit-transform-style: preserve-3d;
+      }
   .owl-carousel .owl-nav.disabled,
   .owl-carousel .owl-dots.disabled {
     display: none; }
