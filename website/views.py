@@ -1,18 +1,22 @@
 from django.shortcuts import render
 from website.forms import *
 from django.http import HttpResponseRedirect
+from django.contrib import messages
 def index(request):
     return render(request,'website/index.html')
 def about(request):
     return render(request,'website/about.html')
 def contact(request):
     if request.method == 'POST':
-        form = ContactForm(request.POST)
+        post = request.POST.copy()
+        post['name']= 'unknown'
+        form = ContactForm(post)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/')
+            messages.success(request,'your ticket submitted successfully')
+            
         else:
-            return HttpResponseRedirect('/')
+            messages.error(request,'your ticket didnt submitted')
     form = ContactForm()
     context = {'form': form}
     return render(request,'website/contact.html',context)
@@ -21,12 +25,8 @@ def elements(request):
 def newsletter(request):
     if request.method == 'POST':
         form = NewsletterForm(request.POST)
-        print(form,'_______________________')
-        print(form)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/')
+            messages.success(request,'___________')
         else:
-            return HttpResponseRedirect('/')
-    else:
-        return HttpResponseRedirect('/')
+            messages.error(request,'--------')
