@@ -54,7 +54,7 @@
 							</div>														
 						</div>
 						<div class="col-lg-8">
-							{% include "messages.html" %}
+					
 							<form class="form-area contact-form text-right"  action="{%url 'website:contact'%}" method="post">
 								<div class="row">
 									{% csrf_token %}	
@@ -73,7 +73,8 @@
 										<button class="genric-btn primary" style="float: right;">Send Message</button>											
 									</div>
 								</div>
-							</form>	
+							</form>
+						
 						</div>
 					</div>
 				</div>	

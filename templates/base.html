@@ -18,9 +18,9 @@
     <title>Travel</title>
 
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet" />
-    <!--    
+    <!--     
 			CSS
-			=============================================     -->
+			=============================================      -->
     <link rel="stylesheet" href="{% static 'css/linearicons.css' %}" />
     <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" />
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}" />
@@ -159,7 +159,7 @@
               <h6>Newsletter</h6>
               <p>For business professionals caught between high OEM price and mediocre print and graphic output.</p>
               <div>
-                <form action="{% url 'website:newsletter'%}" method="post" class="subscription relative">
+                <form action="{% url 'website:newsletter' %}" method="post" class="subscription relative">
                   {% csrf_token %}
                   <div class="input-group d-flex flex-row">
                     <input name="email" placeholder="Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address '" required="" type="email" />
@@ -238,3 +238,4 @@
     <script src="{% static 'js/main.js' %}"></script>
   </body>
 </html>
+{%include 'messages.html'%}

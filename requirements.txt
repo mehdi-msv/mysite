@@ -4,3 +4,4 @@ django-extensions==3.2.3
 pillow==10.2.0
 pytz==2024.1
 sqlparse==0.4.4
+sweetify==2.3.1

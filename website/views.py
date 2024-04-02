@@ -2,6 +2,7 @@ from django.shortcuts import render
 from website.forms import *
 from django.http import HttpResponseRedirect
 from django.contrib import messages
+import sweetify
 def index(request):
     return render(request,'website/index.html')
 def about(request):
@@ -13,10 +14,10 @@ def contact(request):
         form = ContactForm(post)
         if form.is_valid():
             form.save()
-            messages.success(request,'your ticket submitted successfully')
+            sweetify.success(request,'your ticket submitted successfully')
             
         else:
-            messages.error(request,'your ticket didnt submitted')
+            sweetify.error(request,'your ticket didnt submitted')
     form = ContactForm()
     context = {'form': form}
     return render(request,'website/contact.html',context)
