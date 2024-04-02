@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
     'django.contrib.humanize',
     'django_extensions',
+    'robots',
     'sweetify',
     'website',
     'blog',
@@ -57,7 +58,13 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'mysite.urls'
+#site settings
 SITE_ID = 2
+# robots settings
+ROBOTS_USE_SITEMAP = False
+ROBOTS_USE_SCHEME_IN_HOST = True
+
+
 
 TEMPLATES = [
     {
