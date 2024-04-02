@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'django_extensions',
     'robots',
+    "debug_toolbar",
     'sweetify',
     'website',
     'blog',
@@ -55,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -62,7 +64,7 @@ ROOT_URLCONF = 'mysite.urls'
 SITE_ID = 2
 # robots settings
 ROBOTS_USE_SITEMAP = False
-ROBOTS_USE_SCHEME_IN_HOST = True
+ROBOTS_USE_SCHEME_IN_HOST = False
 
 
 
@@ -153,3 +155,8 @@ MESSAGE_TAGS = {
     messages.WARNING: 'alert-warning',
     messages.ERROR: 'alert-danger',
 }
+INTERNAL_IPS = [
+    # ...
+    "127.0.0.1",
+    # ...
+]
