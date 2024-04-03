@@ -9,9 +9,9 @@
         <div class="details">
           <div class="tags">
             <ul>
-              {% for cat in post.category.all %}
+              {% for tag in post.tag.all %}
               <li>
-                <a href="{%url 'blog:category' cat_name=cat%}">{{cat}}</a>
+                <a href="{%url 'blog:tag' tag_name=tag.name%}">{{tag.name}}</a>
               </li>
               {% endfor %}
             </ul>

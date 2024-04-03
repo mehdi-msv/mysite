@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'robots',
     "debug_toolbar",
+    "taggit",
     'sweetify',
     'website',
     'blog',
