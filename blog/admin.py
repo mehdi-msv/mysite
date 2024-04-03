@@ -11,7 +11,3 @@ class PostAdmin(admin.ModelAdmin):
 class CategoriesAdmin(admin.ModelAdmin):
     list_display = ('name',)
     search_fields = ['name']
-@admin.register(Tags)
-class TagsAdmin(admin.ModelAdmin):
-    list_display = ('name',)
-    search_fields = ['name']
