@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'multi_captcha_admin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'django_extensions',
     'django_summernote',
+    'captcha',
     'robots',
     "debug_toolbar",
     "taggit",
@@ -157,8 +159,13 @@ MESSAGE_TAGS = {
     messages.WARNING: 'alert-warning',
     messages.ERROR: 'alert-danger',
 }
+#SITE 
 INTERNAL_IPS = [
     # ...
     "127.0.0.1",
     # ...
 ]
+#captcha settings
+MULTI_CAPTCHA_ADMIN = {
+    'engine': 'simple-captcha',
+}
