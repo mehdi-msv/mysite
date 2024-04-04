@@ -18,3 +18,6 @@ def postcategories():
 def latest_posts(args=6):
     posts = Post.objects.filter(status=1,published_date__lte = timezone.now()).order_by('-published_date')[:args]
     return {'posts':posts}
+@register.simple_tag(name='comments_count')
+def function(pid):
+    return Comment.objects.filter(post_id = pid,approved =True).count()
