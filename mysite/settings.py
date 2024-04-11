@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'sweetify',
     'website',
     'blog',
+    'accounts',
 ]
 
 MIDDLEWARE = [

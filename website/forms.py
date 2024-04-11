@@ -2,7 +2,7 @@ from django.forms import ModelForm
 from website.models import *
 from django import forms
 from captcha.fields import CaptchaField
-class ContactForm(forms.Form):
+class ContactForm(forms.ModelForm):
     captcha = CaptchaField()
     class Meta:
          model = Contact

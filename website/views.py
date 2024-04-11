@@ -12,6 +12,7 @@ def contact(request):
         post = request.POST.copy()
         post['name']= 'unknown'
         form = ContactForm(post)
+        print(form)
         if form.is_valid():
             form.save()
             sweetify.success(request,'your ticket submitted successfully')
