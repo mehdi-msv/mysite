@@ -42,6 +42,9 @@
                 <li>
                   <a href="#">Logged In As {{request.user.username}}</a>
                 </li>
+                <li>
+                  <a href="{% url 'accounts:logout' %}">Logout</a>
+                </li>
                 {% endif %}
                 {% if not request.user.is_authenticated%}
                 <li>
