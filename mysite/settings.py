@@ -72,6 +72,8 @@ ROBOTS_USE_SITEMAP = False
 ROBOTS_USE_SCHEME_IN_HOST = False
 
 
+AUTHENTICATION_BACKENDS = ['accounts.backends.EmailOrUsernameModelBackend']
+
 
 TEMPLATES = [
     {
