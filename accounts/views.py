@@ -34,6 +34,9 @@ def signup_view(request):
                 form.save()
                 sweetify.success(request,'your account has been created successfully')
                 return redirect('/')
+            else:
+                sweetify.error(request,'your account didnt created')
+                return redirect('/')
         form = UserCreationForm()
         context = {'form': form}
         return render(request,'accounts/signup.html', context)
