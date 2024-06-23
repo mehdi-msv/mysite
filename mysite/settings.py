@@ -178,7 +178,6 @@ MULTI_CAPTCHA_ADMIN = {
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-DEFAULT_FROM_EMAIL = "MY APP"
 EMAIL_HOST_USER =os.environ.get("AA_EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD =os.environ.get("AA_EMAIL_HOST_PASSWORD")
 EMAIL_PORT = 587

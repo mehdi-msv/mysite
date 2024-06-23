@@ -13,6 +13,7 @@ from django.template.loader import render_to_string
 from django.db.models.query_utils import Q
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
+from django.conf import settings
 def login_view(request):
     if request.user.is_authenticated:
         return redirect('/')
@@ -73,7 +74,7 @@ def password_reset(request):
                     }
                     email = render_to_string(email_template_name, parameters)
                     try:
-                        send_mail(subject, email, None, [user.email],fail_silently=False)
+                        send_mail(subject, email, settings.EMAIL_HOST_USER , [user.email],fail_silently=False)
                     except:
                         return HttpResponse('Invalid Header')
                     return redirect('accounts:password_reset_done')
