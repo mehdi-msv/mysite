@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.backends import ModelBackend
 from django.db.models import Q
-
+from django.contrib.auth.tokens import PasswordResetTokenGenerator
 
 class EmailOrUsernameModelBackend(ModelBackend):
     """
@@ -36,3 +36,16 @@ class EmailOrUsernameModelBackend(ModelBackend):
             # difference between an existing and a non-existing user (see
             # https://code.djangoproject.com/ticket/20760)
             user_model().set_password(password)
+
+class EmailBackend(ModelBackend):
+    def authenticate(self, request, username=None, password=None, **kwargs):
+        UserModel = get_user_model()
+        try:
+            user = UserModel.objects.get(email=username)
+        except UserModel.DoesNotExist:
+            return None
+        else:
+            if user.check_password(password):
+                return user
+        return None
+# Create a custom password reset token generator

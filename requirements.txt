@@ -1,6 +1,8 @@
 asgiref==3.7.2
 bleach==6.1.0
+crispy-bootstrap3==2024.1
 Django==3.2.25
+django-crispy-forms==1.14.0
 django-debug-toolbar==4.3.0
 django-extensions==3.2.3
 django-multi-captcha-admin==2.0.0
