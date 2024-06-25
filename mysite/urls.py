@@ -41,5 +41,14 @@ urlpatterns = [
     path('captcha/', include('captcha.urls')),
     path('accounts/', include('accounts.urls')),
 ]
+
+
 urlpatterns += static(settings.STATIC_URL,document_root = settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)
+
+
+
+handler400 = "mysite.error_views.error_400"     # bad request
+handler403 = "mysite.error_views.error_403"     # permission denied
+handler404 = "mysite.error_views.error_404"     # page not found
+# handler500 = "mysite.error_views.error_500"     # server error

@@ -152,5 +152,3 @@ INTERNAL_IPS = [
 MULTI_CAPTCHA_ADMIN = {
     'engine': 'simple-captcha',
 }
-
-
