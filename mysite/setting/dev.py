@@ -11,7 +11,31 @@ DEBUG = config('DEBUG', cast=bool, default=False)
 
 ALLOWED_HOSTS = ['*']
 
-#INSTALL_APPS = []
+# Application definition
+
+INSTALLED_APPS = [
+    'multi_captcha_admin',
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'django.contrib.sitemaps',
+    'django.contrib.humanize',
+    'django_extensions',
+    'django_summernote',
+    'captcha',
+    'robots',
+    "debug_toolbar",
+    "taggit",
+    'sweetify',
+    'website',
+    'blog',
+    'accounts',
+    'crispy_forms',
+]
 
 #site settings
 SITE_ID = config('SITE_ID', cast=int, default=2)
