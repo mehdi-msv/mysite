@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 from django.contrib import messages
 from pathlib import Path
-import os
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -152,12 +152,5 @@ INTERNAL_IPS = [
 MULTI_CAPTCHA_ADMIN = {
     'engine': 'simple-captcha',
 }
-
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER =os.environ.get("AA_EMAIL_HOST_USER")
-EMAIL_HOST_PASSWORD =os.environ.get("AA_EMAIL_HOST_PASSWORD")
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
 
 
