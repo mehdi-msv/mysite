@@ -34,8 +34,7 @@ def error_404(request, exception):
 # function for error 500
 
 
-# def error_500(request, exception):
-#     context = {'exception': exception}
-#     response = render(request, 'errors/500.html',context=context)
-#     response.status_code = 500
-#     return response
+def error_500(request):
+    response = render(request, "errors/500.html")
+    response.status_code = 500
+    return response
