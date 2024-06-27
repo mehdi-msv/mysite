@@ -1,4 +1,5 @@
 {% load static %}
+{% load compress %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +9,7 @@
 <!--===============================================================================================-->	
 	<link rel="icon" type="image/png" href="{% static 'images/icons/favicon.ico' %}"/>
 <!--===============================================================================================-->
+	{% compress css %}
 	<link rel="stylesheet" type="text/css" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="{% static 'fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
@@ -21,6 +23,7 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'css/util.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'css/coming.css' %}">
 <!--===============================================================================================-->
+	{% endcompress %}
 </head>
 <body>
 	
@@ -67,7 +70,7 @@
 
 
 	
-
+	{% compress js %}
 <!--===============================================================================================-->	
 	<script src="{% static 'vendor/jquery/jquery-3.2.1.min.js' %}"></script>
 <!--===============================================================================================-->
@@ -79,6 +82,7 @@
 	<script src="{% static 'vendor/tilt/tilt.jquery.min.js' %}"></script>
 <!--===============================================================================================-->
 	<script src="{% static 'js/coming.js' %}"></script>
+	{% endcompress %}
 
 </body>
 </html>

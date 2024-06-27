@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'website',
     'blog',
     'accounts',
-    'crispy_forms'
+    'crispy_forms',
+    'compressor',
 ]
 
 #site settings
