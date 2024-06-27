@@ -7,7 +7,7 @@ from decouple import config
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG',cast=bool,default=True)
 
 ALLOWED_HOSTS = [
     '*'
@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'accounts',
     'crispy_forms',
     'compressor',
+    'rjsmin',
+    'rcssmin',
 ]
 
 
@@ -69,6 +71,10 @@ STATICFILES_DIRS = [
 ]
 
 COMINGSOON = config("COMINGSOON", cast=bool, default=False)
+
+
+COMPRESS_ENABLED = config("COMPRESS_ENABLED", cast=bool, default=False)
+COMPRESS_OFFLINE = config("COMPRESS_OFFLINE", cast=bool, default=False)
 
 EMAIL_BACKEND = config('EMAIL_BACKEND_DEV')
 

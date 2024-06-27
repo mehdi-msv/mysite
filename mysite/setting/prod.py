@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'accounts',
     'crispy_forms',
     'compressor',
+    'rjsmin',
+    'rcssmin',
 ]
 
 #site settings
@@ -75,7 +77,13 @@ EMAIL_USE_TLS = config("EMAIL_USE_TLS", cast=bool, default=False)
 DEFAULT_FROM_EMAIL = config(
     "DEFAULT_FROM_EMAIL", default="info@example.com")
 
+
+
 COMINGSOON = config("COMINGSOON", cast=bool, default=False)
+
+
+COMPRESS_ENABLED = config("COMPRESS_ENABLED", cast=bool, default=False)
+COMPRESS_OFFLINE = config("COMPRESS_OFFLINE", cast=bool, default=False)
 
 # Security
 
