@@ -67,6 +67,8 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static'
 ]
 
+COMINGSOON = config("COMINGSOON", cast=bool, default=False)
+
 EMAIL_BACKEND = config('EMAIL_BACKEND_DEV')
 
 X_FRAME_OPSTIONS = 'SAMEORIGIN'

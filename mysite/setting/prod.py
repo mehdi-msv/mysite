@@ -74,6 +74,8 @@ EMAIL_USE_TLS = config("EMAIL_USE_TLS", cast=bool, default=False)
 DEFAULT_FROM_EMAIL = config(
     "DEFAULT_FROM_EMAIL", default="info@example.com")
 
+COMINGSOON = config("COMINGSOON", cast=bool, default=False)
+
 # Security
 
 # Https settings
