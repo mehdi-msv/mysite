@@ -7,9 +7,11 @@ from decouple import config
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', cast=bool, default=False)
+DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    '*'
+]
 
 # Application definition
 
@@ -18,7 +20,7 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
-    'django.contrib.sessions',
+    'django.contrib.sessions',  
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
@@ -37,6 +39,14 @@ INSTALLED_APPS = [
     'crispy_forms',
 ]
 
+
+
+MIDDLEWARE += [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+]
+
+
+
 #site settings
 SITE_ID = config('SITE_ID', cast=int, default=2)
 
@@ -45,18 +55,22 @@ SITE_ID = config('SITE_ID', cast=int, default=2)
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
+        'ENGINE': config('DEV_ENGINE',default='django.db.backends.sqlite3'),
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
-STATIC_ROOT = BASE_DIR / 'static'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 STATICFILES_DIRS = [
-    BASE_DIR / 'statics'
+    BASE_DIR / 'static'
 ]
 
 EMAIL_BACKEND = config('EMAIL_BACKEND_DEV')
 
 X_FRAME_OPSTIONS = 'SAMEORIGIN'
+
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
+SECURE_SSL_REDIRECT = False

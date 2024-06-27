@@ -7,9 +7,13 @@ from decouple import config
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG_PROD', cast=bool, default=False)
+DEBUG = config('DEBUG', cast=bool, default=False)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = config(
+    "ALLOWED_HOSTS",
+    cast=lambda v: [s.strip() for s in v.split(",")],
+    default="*",
+)
 
 # Application definition
 
@@ -33,60 +37,64 @@ INSTALLED_APPS = [
     'website',
     'blog',
     'accounts',
-    'crispy_forms',
+    'crispy_forms'
 ]
 
 #site settings
 SITE_ID = config('SITE_ID', cast=int, default=2)
 
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': config('DB_NAME'),
-        'USER': config('DB_USER'),
-        'PASSWORD': config('DB_PASS'),
-        'HOST': config('DB_HOST'),
-        'PORT': config('DB_PORT', cast=int),
+    "default": {
+        "ENGINE": config("DB_ENGINE", default="django.db.backends.postgresql"),
+        "NAME": config("DB_NAME", default="postgres"),
+        "USER": config("DB_USER", default="postgres"),
+        "PASSWORD": config("DB_PASS", default="postgres"),
+        "HOST": config("DB_HOST", default="db"),
+        "PORT": config("DB_PORT", cast=int, default=5432),
     }
 }
 
-STATIC_ROOT = BASE_DIR / 'static'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 STATICFILES_DIRS = [
-    BASE_DIR / 'statics'
+    BASE_DIR / 'static'
 ]
 
-EMAIL_BACKEND = config('EMAIL_BACKEND_PROD')
-EMAIL_HOST = config('EMAIL_HOST')
-EMAIL_HOST_USER = config('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
-EMAIL_PORT = config('EMAIL_PORT', cast=int, default=568)
-EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool, default=False)
+EMAIL_BACKEND = config(
+    "EMAIL_BACKEND", default="django.core.mail.backends.smtp.EmailBackend"
+)
+EMAIL_HOST = config("EMAIL_HOST", default="mail.example.come")
+EMAIL_PORT = config("EMAIL_PORT",cast=int, default=465)
+EMAIL_HOST_USER = config("EMAIL_HOST_USER", default="infor@example.com")
+EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD", default="password")
+EMAIL_USE_SSL = config("EMAIL_USE_SSL", cast=bool, default=True)
+EMAIL_USE_TLS = config("EMAIL_USE_TLS", cast=bool, default=False)
+DEFAULT_FROM_EMAIL = config(
+    "DEFAULT_FROM_EMAIL", default="info@example.com")
 
 # Security
 
-# X-XSS-Protection
-
-SECURE_BROWSER_XSS_FILTER = True
-
-## X-Frame-Options
-
-X_FRAME_OPTIONS = 'SAMEORIGIN'
-#X-Content-Type-Options
-SECURE_CONTENT_TYPE_NOSNIFF = True
-## Strict-Transport-Security
-SECURE_HSTS_SECONDS = 15768000
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_HSTS_PRELOAD = True
-
-## that requests over HTTP are redirected to HTTPS. aslo can config in webserver
-SECURE_SSL_REDIRECT = True 
-
-# for more security
-CSRF_COOKIE_SECURE = True
-CSRF_USE_SESSIONS = True
-CSRF_COOKIE_HTTPONLY = True
+# Https settings
 SESSION_COOKIE_SECURE = True
-SESSION_COOKIE_SAMESITE = 'Strict'
 CSRF_COOKIE_SECURE = True
+SECURE_SSL_REDIRECT = True
+
+# HSTS settings
+SECURE_HSTS_SECONDS = 31536000  # 1 year
+SECURE_HSTS_PRELOAD = True
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+
+# more security settings
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_BROWSER_XSS_FILTER = True
+X_FRAME_OPTIONS = "SAMEORIGIN"
+SECURE_REFERRER_POLICY = "strict-origin"
+USE_X_FORWARDED_HOST = True
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+
+
+REST_FRAMEWORK["DEFAULT_RENDERER_CLASSES"] = (
+    "rest_framework.renderers.JSONRenderer",
+)
