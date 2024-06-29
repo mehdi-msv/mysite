@@ -1,11 +1,11 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth import authenticate,login,logout
-from django.contrib.auth.forms import AuthenticationForm , UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm 
 from django.contrib.auth.decorators import login_required
 from .forms import CreateUserForm
 import sweetify
 from django.contrib.auth.tokens import default_token_generator
-from django.core.mail import send_mail , BadHeaderError
+from django.core.mail import send_mail
 from django.http import HttpResponse
 from django.contrib.auth.forms import PasswordResetForm
 from django.contrib.auth.models import User
@@ -14,6 +14,7 @@ from django.db.models.query_utils import Q
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
 from mysite import setting
+from decouple import config
 def login_view(request):
     if request.user.is_authenticated:
         return redirect('/')
@@ -66,11 +67,11 @@ def password_reset(request):
                     email_template_name = 'accounts/password_reset_email.txt'
                     parameters ={
                         'email': user.email,
-                        'domain':'127.0.0.1:8000',
-                        'sitename':'Safe Travel',
+                        'domain':config('DOMAIN',default='127.0.0.1'),
+                        'sitename':config('SITENAME',default='Travelista'),
                         'uid': urlsafe_base64_encode(force_bytes(user.pk)),
                         'token': default_token_generator.make_token(user),
-                        'protocol': 'http'
+                        'protocol': config('PROTOCOL',default='http'),
                     }
                     email = render_to_string(email_template_name, parameters)
                     try:
