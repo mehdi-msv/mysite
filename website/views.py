@@ -12,7 +12,6 @@ def contact(request):
         post = request.POST.copy()
         post['name']= 'unknown'
         form = ContactForm(post)
-        print(form)
         if form.is_valid():
             form.save()
             sweetify.success(request,'your ticket submitted successfully')
@@ -29,6 +28,6 @@ def newsletter(request):
         form = NewsletterForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request,'___________')
+            sweetify.success(request,'Your message has been sent')
         else:
-            messages.error(request,'--------')
+            messages.error(request,'Your message was not sent')
