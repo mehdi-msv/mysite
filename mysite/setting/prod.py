@@ -1,13 +1,5 @@
 from mysite.settings import *
 from decouple import config
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', cast=bool, default=False)
 
 ALLOWED_HOSTS = config(
     "ALLOWED_HOSTS",
@@ -78,8 +70,6 @@ DEFAULT_FROM_EMAIL = config(
     "DEFAULT_FROM_EMAIL", default="info@example.com")
 
 
-
-COMINGSOON = config("COMINGSOON", cast=bool, default=False)
 
 
 COMPRESS_ENABLED = config("COMPRESS_ENABLED", cast=bool, default=False)
