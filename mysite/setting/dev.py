@@ -70,7 +70,7 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static'
 ]
 
-COMINGSOON = config("COMINGSOON", cast=bool, default=False)
+COMINGSOON = config("COMINGSOON", cast=bool, default=True)
 
 
 COMPRESS_ENABLED = config("COMPRESS_ENABLED", cast=bool, default=False)

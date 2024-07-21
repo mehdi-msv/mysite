@@ -30,4 +30,4 @@ def newsletter(request):
             form.save()
             sweetify.success(request,'Your message has been sent')
         else:
-            messages.error(request,'Your message was not sent')
+            sweetify.error(request,'Your message was not sent')
